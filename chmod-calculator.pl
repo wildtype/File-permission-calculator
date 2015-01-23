@@ -8,32 +8,37 @@ my $builder = Gtk3::Builder->new();
 $builder->add_from_file("interface.ui");
 $builder->connect_signals(undef);
 
-my $window = $builder->get_object("MainWindow");
-$window->show_all();
-
-#get all necessary objects
-my $cbUserRead = $builder->get_object("cbUserRead");
-my $cbUserWrite = $builder->get_object("cbUserWrite");
-my $tbOctal = $builder->get_object("tbOctal");
-use Data::Dumper;
-foreach my $ob ($builder->get_objects())
-{
-    print Dumper $ob;
-}  
+my %w = get_objects($builder, qw{MainWindow cbUserRead cbUserWrite tbOctal});
+$w{MainWindow}->show_all();
 
 Gtk3->main();
 
 sub on_MainWindow_delete_event
 {
-    Gtk3::main_quit;
+    Gtk3::main_quit();
 }
 
 sub on_cbs_toggled
 {
-    my $isUserRead = $cbUserRead->get_active();
+    my $isUserRead = $w{cbUserRead}->get_active();
     if($isUserRead) {
-        $tbOctal->set_text("User can read file");
+        $w{tbOctal}->set_text("User can read file");
     } else {
-        $tbOctal->set_text("User can't read file");
+        $w{tbOctal}->set_text("User can't read file");
     }
+}
+
+# ambil semua objek dari gtkbuilder/glade
+# pengganti Gtk::Builder->get_object untuk tiap2 object
+# panggil sekali, dapat semua, macam itulah
+# return hash dengan key berupa nama object
+sub get_objects
+{
+    my $builder = shift;
+    my %objects;
+    foreach my $object_name (@_) {
+        my $object = $builder->get_object($object_name);
+        $objects{$object_name} = $object;
+    }
+    return %objects;
 }
