@@ -11,3 +11,7 @@ my $window = $builder->get_object("MainWindow");
 $window->show_all();
 Gtk3->main();
 
+sub on_MainWindow_delete_event
+{
+    Gtk3::main_quit;
+}
