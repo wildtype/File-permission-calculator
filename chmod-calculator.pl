@@ -45,65 +45,21 @@ sub on_cbs_toggled
 sub on_tbOctal_changed
 {
     my $octal = $w{tbOctal}->get_text();
-    print "|".$octal."|";
     #proses cuma kalau nilainya 3digit oktal
     if ($octal =~ /^[0-7]{3}$/) {
+        my @u = qw{Owner Group Other}; #u means user(s)
+        my @m = qw{Read Write Exe}; # means mode(s)
         my @oct = split '',$octal;
-        if ($oct[0] >= 4) {
-            $w{cbOwnerRead}->set_active(1);
-            $oct[0] -= 4;
-        } else {
-            $w{cbOwnerRead}->set_active(0);
+        foreach my $i (0..2) {
+            my $m_dec = $oct[$i]; # mode dalam desimal
+            my @m_bin = split '',sprintf("%03b", $m_dec);
+            foreach my $j (0..2) {
+                my $key = "cb".$u[$i].$m[$j];
+                $w{$key}->set_active($m_bin[$j]+0);
+            }
         }
-        if ($oct[0] >= 2) {
-            $w{cbOwnerWrite}->set_active(1);
-            $oct[0] -= 2;
-        } else {
-            $w{cbOwnerWrite}->set_active(0);
-        }
-        if ($oct[0] >= 1) {
-            $w{cbOwnerExe}->set_active(1);
-            $oct[0] -= 1;
-        } else {
-            $w{cbOwnerExe}->set_active(0);
-        }
-        if ($oct[1] >= 4) {
-            $w{cbOtherRead}->set_active(1);
-            $oct[1] -= 4;
-        } else {
-            $w{cbOtherRead}->set_active(0);
-        }
-        if ($oct[1] >= 2) {
-            $w{cbOtherWrite}->set_active(1);
-            $oct[1] -= 2;
-        } else {
-            $w{cbOtherWrite}->set_active(0);
-        }
-        if ($oct[1] >= 1) {
-            $w{cbOtherExe}->set_active(1);
-            $oct[1] -= 1;
-        } else {
-            $w{cbOtherExe}->set_active(0);
-        }
-        if ($oct[2] >= 4) {
-            $w{cbGroupRead}->set_active(1);
-            $oct[2] -= 4;
-        } else {
-            $w{cbGroupRead}->set_active(0);
-        }
-        if ($oct[2] >= 2) {
-            $w{cbGroupWrite}->set_active(1);
-            $oct[2] -= 2;
-        } else {
-            $w{cbGroupWrite}->set_active(0);
-        }
-        if ($oct[2] >= 1) {
-            $w{cbGroupExe}->set_active(1);
-            $oct[2] -= 1;
-        } else {
-            $w{cbGroupExe}->set_active(0);
-        }
-    }
+
+   }
 }
 # ambil semua objek dari gtkbuilder/glade
 # pengganti Gtk::Builder->get_object untuk tiap2 object
