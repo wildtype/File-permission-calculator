@@ -8,7 +8,14 @@ my $builder = Gtk3::Builder->new();
 $builder->add_from_file("interface.ui");
 $builder->connect_signals(undef);
 
-my %w = get_objects($builder, qw{MainWindow cbUserRead cbUserWrite tbOctal});
+# w = Widgets
+# get all widgets from gtkbuilder
+my %w = get_objects (
+    $builder, 
+    qw{MainWindow cbUserRead cbUserWrite cbUserExe cbGroupRead 
+    cbGroupWrite cbGroupExe cbOtherRead cbOtherWrite cbOtherExe 
+    tbOctal}
+);
 $w{MainWindow}->show_all();
 
 Gtk3->main();
