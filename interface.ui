@@ -45,6 +45,7 @@
                             <property name="xalign">0</property>
                             <property name="yalign">0.4699999988079071</property>
                             <property name="draw_indicator">True</property>
+                            <signal name="toggled" handler="on_cbs_toggled" swapped="no"/>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -306,7 +307,9 @@
                 <property name="margin_right">5</property>
                 <property name="margin_top">5</property>
                 <property name="margin_bottom">5</property>
-                <property name="max_length">3</property>
+                <!--
+                    <property name="max_length">3</property>
+                -->
                 <property name="invisible_char">●</property>
               </object>
             </child>
@@ -352,6 +355,7 @@
                 <property name="margin_bottom">5</property>
                 <property name="use_action_appearance">False</property>
                 <property name="use_stock">True</property>
+                <signal name="clicked" handler="on_MainWindow_delete_event" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">True</property>
