@@ -3,6 +3,7 @@
 use strict;
 use warnings;
 use Gtk3 '-init';
+use Pango;
 
 my $builder = Gtk3::Builder->new();
 $builder->add_from_file("interface.ui");
@@ -16,6 +17,11 @@ my %w = get_objects (
     cbGroupWrite cbGroupExe cbOtherRead cbOtherWrite cbOtherExe 
     tbOctal}
 );
+
+my $font = Pango::FontDescription->from_string("monospace 16");
+$w{tbOctal}->modify_font($font);
+$font->free();
+
 $w{MainWindow}->show_all();
 
 Gtk3->main();
