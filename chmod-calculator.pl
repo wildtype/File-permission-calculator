@@ -28,11 +28,18 @@ sub on_MainWindow_delete_event
 sub on_cbs_toggled
 {
     my $isUserRead = $w{cbUserRead}->get_active();
-    if($isUserRead) {
-        $w{tbOctal}->set_text("User can read file");
-    } else {
-        $w{tbOctal}->set_text("User can't read file");
-    }
+    my $isUserWrite = $w{cbUserWrite}->get_active();
+    my $isUserExe = $w{cbUserExe}->get_active();
+    my $isGroupWrite = $w{cbGroupWrite}->get_active();
+    my $isGroupRead = $w{cbGroupRead}->get_active();
+    my $isGroupExe = $w{cbGroupExe}->get_active();
+    my $isOtherRead = $w{cbOtherRead}->get_active();
+    my $isOtherWrite = $w{cbOtherWrite}->get_active();
+    my $isOtherExe = $w{cbOtherExe}->get_active();
+    my $umod = 4*$isUserRead + 2*$isUserWrite + 1*$isUserExe;
+    my $gmod = 4*$isGroupRead + 2*$isGroupWrite + 1*$isGroupExe;
+    my $omod = 4*$isOtherRead + 2*$isOtherWrite + 1*$isOtherExe;
+    $w{tbOctal}->set_text($umod.$gmod.$omod);
 }
 
 # ambil semua objek dari gtkbuilder/glade

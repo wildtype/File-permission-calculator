@@ -54,7 +54,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkCheckButton" id="checkbutton2">
+                          <object class="GtkCheckButton" id="cbUserWrite">
                             <property name="label" translatable="yes">Write</property>
                             <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
