@@ -11,8 +11,15 @@ $builder->connect_signals(undef);
 my $window = $builder->get_object("MainWindow");
 $window->show_all();
 
+#get all necessary objects
 my $cbUserRead = $builder->get_object("cbUserRead");
+my $cbUserWrite = $builder->get_object("cbUserWrite");
 my $tbOctal = $builder->get_object("tbOctal");
+use Data::Dumper;
+foreach my $ob ($builder->get_objects())
+{
+    print Dumper $ob;
+}  
 
 Gtk3->main();
 
