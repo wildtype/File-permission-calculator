@@ -17,7 +17,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkFrame" id="frameUser">
+              <object class="GtkFrame" id="frameOwner">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="margin_left">5</property>
@@ -35,7 +35,7 @@
                         <property name="can_focus">False</property>
                         <property name="orientation">vertical</property>
                         <child>
-                          <object class="GtkCheckButton" id="cbUserRead">
+                          <object class="GtkCheckButton" id="cbOwnerRead">
                             <property name="label" translatable="yes">Read</property>
                             <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
@@ -54,7 +54,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkCheckButton" id="cbUserWrite">
+                          <object class="GtkCheckButton" id="cbOwnerWrite">
                             <property name="label" translatable="yes">Write</property>
                             <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
@@ -72,7 +72,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkCheckButton" id="cbUserExe">
+                          <object class="GtkCheckButton" id="cbOwnerExe">
                             <property name="label" translatable="yes">Execute</property>
                             <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
@@ -94,10 +94,10 @@
                   </object>
                 </child>
                 <child type="label">
-                  <object class="GtkLabel" id="labelUser">
+                  <object class="GtkLabel" id="labelOwner">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="label" translatable="yes">&lt;b&gt;User&lt;/b&gt;</property>
+                    <property name="label" translatable="yes">&lt;b&gt;Owner&lt;/b&gt;</property>
                     <property name="use_markup">True</property>
                   </object>
                 </child>
@@ -315,10 +315,8 @@
                 <property name="margin_right">5</property>
                 <property name="margin_top">5</property>
                 <property name="margin_bottom">5</property>
-                <!--
-                    <property name="max_length">3</property>
-                -->
                 <property name="invisible_char">●</property>
+                <signal name="changed" handler="on_tbOctal_changed" swapped="no"/>
               </object>
             </child>
           </object>
