@@ -15,17 +15,12 @@ $window->show_all();
 my $cbUserRead = $builder->get_object("cbUserRead");
 my $cbUserWrite = $builder->get_object("cbUserWrite");
 my $tbOctal = $builder->get_object("tbOctal");
-use Data::Dumper;
-foreach my $ob ($builder->get_objects())
-{
-    print Dumper $ob;
-}  
 
 Gtk3->main();
 
 sub on_MainWindow_delete_event
 {
-    Gtk3::main_quit;
+    Gtk3::main_quit();
 }
 
 sub on_cbs_toggled
