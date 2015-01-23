@@ -13,7 +13,7 @@ $builder->connect_signals(undef);
 # get all widgets from gtkbuilder
 my %w = get_objects (
     $builder, 
-    qw{MainWindow cbOwnerRead cbOwnerWrite cbOwnerExe cbGroupRead 
+    qw{MainWindow dgHelp cbOwnerRead cbOwnerWrite cbOwnerExe cbGroupRead 
     cbGroupWrite cbGroupExe cbOtherRead cbOtherWrite cbOtherExe 
     tbOctal}
 );
@@ -21,7 +21,6 @@ my %w = get_objects (
 my $font = Pango::FontDescription->from_string("monospace 16");
 $w{tbOctal}->modify_font($font);
 $font->free();
-
 $w{MainWindow}->show_all();
 
 Gtk3->main();
@@ -67,6 +66,7 @@ sub on_tbOctal_changed
 
    }
 }
+
 # ambil semua objek dari gtkbuilder/glade
 # pengganti Gtk::Builder->get_object untuk tiap2 object
 # panggil sekali, dapat semua, macam itulah
