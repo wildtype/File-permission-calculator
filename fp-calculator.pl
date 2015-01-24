@@ -1,5 +1,24 @@
 #!/usr/bin/env perl
 
+# Copyright (C) 2015 by Wildtype / Walang
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# Convert file permission (rwxrwxrwx) into octal code (777)
+# An attempt to learn Gtk3, glade, and perl
+# Gtk3 documentation for perl are sucks (even not exist)
+# Gtk's documentation in C and python comes as saviour
+
 use strict;
 use warnings;
 use Gtk3 '-init';
