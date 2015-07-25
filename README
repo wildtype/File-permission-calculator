@@ -1,0 +1,3 @@
+Convert file permission (rwxrwxrwx) into octal code (777) or vice-versa. An attempt to learn Gtk3, glade, and perl. Gtk3 documentation for perl are sucks (even not exist), gtk's documentation in C and python comes as saviour.
+
+This git repo imported from fossil repo.
